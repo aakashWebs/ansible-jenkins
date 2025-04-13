@@ -1,0 +1,14 @@
+- name: Deploy simple web app
+  hosts: webserver
+  become: yes
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Copy website
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
